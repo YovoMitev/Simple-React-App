@@ -29,7 +29,7 @@ class UserHeader extends Component {
 
 function mapStateToProps(state) {
     return {
-        user: state.user.currentSignInUser
+        user: state.user.currentSignInUser ? state.user.currentSignInUser : ""
     }
 }
 
