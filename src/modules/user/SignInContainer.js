@@ -12,7 +12,8 @@ class SignInContainer extends Component {
             username: "",
             password: ""
         },
-        message: ""
+        message: "",
+        dataIsPopulated: false
     };
 
     clearErrors = () => {
@@ -30,6 +31,8 @@ class SignInContainer extends Component {
 
         let user = Object.assign({}, this.state.user);
         user[name] = value;
+
+        user["username"] !== "" & user["password"] !== "" && this.setState({dataIsPopulated: true});
 
         this.setState({user});
     };
@@ -62,7 +65,7 @@ class SignInContainer extends Component {
     };
 
     render() {
-        const {user, errors, message} = this.state;
+        const {user, errors, message, dataIsPopulated} = this.state;
         const {username, password} = user;
 
         return (
@@ -75,6 +78,7 @@ class SignInContainer extends Component {
                     username={username}
                     password={password}
                     errors={errors}
+                    dataIsPopulated={dataIsPopulated}
                 />
             </div>
         );
@@ -82,13 +86,11 @@ class SignInContainer extends Component {
 }
 
 function mapStateToProps(state) {
-    return {
-    }
+    return {}
 }
 
 function mapDispatchToProps(dispatch) {
-    return {
-    }
+    return {}
 }
 
 export default connect(

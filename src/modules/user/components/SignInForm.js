@@ -1,7 +1,7 @@
 import React from "react";
 import Input from "../../common/input/Input";
 
-const SignInForm = ({handleInput, handleSubmit, username, password, errors}) => (
+const SignInForm = ({handleInput, handleSubmit, username, password, errors, dataIsPopulated}) => (
     <form>
         <div className="form-group">
             <Input
@@ -28,6 +28,7 @@ const SignInForm = ({handleInput, handleSubmit, username, password, errors}) => 
                 type="submit"
                 value="Sign-In"
                 onClick={handleSubmit}
+                disabled={!dataIsPopulated}
             />
         </div>
     </form>
