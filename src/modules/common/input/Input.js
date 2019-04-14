@@ -4,14 +4,13 @@ const Input = ({name, placeholder, type, value, onChange, onClick, disabled, err
     <div className="form-group">
         <label htmlFor={name}>{placeholder}</label>
         <input
-            className='form-control'
+            className={type === "submit" ? "btn btn-primary" : "form-control"}
             type={type}
             name={name}
             id={name}
             value={value}
             onChange={onChange}
             onClick={onClick}
-            checked={value}
             disabled={disabled}
         />
         <span className='alert-warning'>{error}</span>

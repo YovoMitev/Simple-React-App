@@ -1,18 +1,8 @@
 import React from "react";
 import Input from "../../common/input/Input";
 
-const SignUpForm = ({handleInput, handleSubmit, name, username, password, errors}) => (
+const SignInForm = ({handleInput, handleSubmit, username, password, errors}) => (
     <form>
-        <div className="form-group">
-            <Input
-                type="text"
-                name='name'
-                placeholder="Name"
-                value={name}
-                onChange={handleInput}
-                error={errors.name}
-            />
-        </div>
         <div className="form-group">
             <Input
                 type="text"
@@ -36,11 +26,11 @@ const SignUpForm = ({handleInput, handleSubmit, name, username, password, errors
         <div className="form-group">
             <Input
                 type="submit"
-                value="Sign-Up"
+                value="Sign-In"
                 onClick={handleSubmit}
             />
         </div>
     </form>
 );
 
-export default SignUpForm;
+export default SignInForm;
