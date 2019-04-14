@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
+import {deleteAction} from "../../redux/actions/user/actions";
 import UsersTable from "./components/UsersTable";
 
 class DashboardContainer extends Component {
@@ -7,21 +8,16 @@ class DashboardContainer extends Component {
         users: []
     };
 
-    componentDidMount() {
-        const {users, currentSignInUser} = this.props;
-        const {username} = currentSignInUser;
-        /**Remove current logged in user from users arr */
-        this.setState({users: users.filter(user => user.username !== username)})
-    }
-
     render() {
-        const {users} = this.state;
+        const {deleteAction, users, currentSignInUser} = this.props;
         return (
             <div>
                 {
                     users.length !== 0
                         ? <UsersTable
                             users={users}
+                            deleteAction={deleteAction}
+                            currentSignInUser={currentSignInUser}
                         />
                         : <h2>No users to show !</h2>
                 }
@@ -38,7 +34,9 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return {}
+    return {
+        deleteAction: (username) => dispatch(deleteAction(username))
+    }
 }
 
 export default connect(

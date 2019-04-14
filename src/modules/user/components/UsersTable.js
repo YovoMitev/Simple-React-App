@@ -1,6 +1,6 @@
 import React from "react";
 
-const UsersTable = ({users}) => (
+const UsersTable = ({users, deleteAction, currentSignInUser}) => (
     <table className="table">
         <thead>
         <tr>
@@ -13,11 +13,18 @@ const UsersTable = ({users}) => (
         <tbody>
         {users.map((user, index) => {
             const {name, username} = user;
-            return <tr>
+            return <tr key={index}>
                 <th scope="row">{index}</th>
                 <td>{name}</td>
                 <td>{username}</td>
-                <td><button className= "btn btn-primary">Delete</button></td>
+                <td>
+                    {username !== currentSignInUser.username
+                    && <button className="btn btn-primary" onClick={() => {
+                        deleteAction(username)
+                    }
+                    }>Delete
+                    </button>}
+                </td>
             </tr>
         })}
         </tbody>

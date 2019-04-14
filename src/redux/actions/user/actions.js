@@ -1,4 +1,4 @@
-import {SIGN_UP_SUCCESS, SIGN_IN_SUCCESS, LOGOUT} from "./actionTypes";
+import {SIGN_UP_SUCCESS, SIGN_IN_SUCCESS, LOGOUT, DELETE_USER} from "./actionTypes";
 
 export const signUpAction = (user) => {
     return {
@@ -18,5 +18,12 @@ export const signInAction = (user) => {
 export const logoutAction = () => {
     return {
         type: LOGOUT
+    }
+};
+
+export const deleteAction = (username) => {
+    return {
+        type: DELETE_USER,
+        username
     }
 };
