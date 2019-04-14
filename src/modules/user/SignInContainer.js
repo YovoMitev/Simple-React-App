@@ -1,7 +1,9 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
+import {signInAction} from "../../redux/actions/user/actions";
 import SignInForm from "./components/SignInForm";
 
+const MINIMUM_ALLOWED_SYMBOLS = 3;
 class SignInContainer extends Component {
     state = {
         user: {
@@ -32,20 +34,41 @@ class SignInContainer extends Component {
         let user = Object.assign({}, this.state.user);
         user[name] = value;
 
-        user["username"] !== "" & user["password"] !== "" && this.setState({dataIsPopulated: true});
+        user["username"].length >= MINIMUM_ALLOWED_SYMBOLS
+        && user["password"].length >= MINIMUM_ALLOWED_SYMBOLS
+        ? this.setState({dataIsPopulated: true})
+        : this.setState({dataIsPopulated: false});
 
         this.setState({user});
     };
 
     handleSubmit = (event) => {
         event.preventDefault();
-        const {user} = this.state;
+        let {user} = this.state;
         const {errors, isValid} = this.validateForm(user);
         if (!isValid) {
             this.setState({errors});
             return;
         }
         this.clearErrors();
+        const {users, history, signInAction} = this.props;
+        let isValidUser = false;
+
+        users.map(currentUser => {
+            const {name, username, password} = currentUser;
+            if(username === user.username && password === user.password) {
+                isValidUser = true;
+                user["name"] = name;
+            }
+        });
+
+        if(!isValidUser) {
+            this.setState({message: "Wrong credentials !"})
+            return;
+        }
+
+        signInAction(user);
+        history.push("/dashboard");
     };
 
     validateForm = (formData) => {
@@ -53,11 +76,11 @@ class SignInContainer extends Component {
         let errors = {};
         const {username, password} = formData;
 
-        if (username.length < 3) {
+        if (username.length < MINIMUM_ALLOWED_SYMBOLS) {
             isValid = false;
             errors.username = "Username must be at least 3 symbols !";
         }
-        if (password < 3) {
+        if (password < MINIMUM_ALLOWED_SYMBOLS) {
             isValid = false;
             errors.password = "Username must be at least 3 symbols !";
         }
@@ -86,11 +109,15 @@ class SignInContainer extends Component {
 }
 
 function mapStateToProps(state) {
-    return {}
+    return {
+        users: state.user.users
+    }
 }
 
 function mapDispatchToProps(dispatch) {
-    return {}
+    return {
+        signInAction: (user) => dispatch(signInAction(user))
+    }
 }
 
 export default connect(
