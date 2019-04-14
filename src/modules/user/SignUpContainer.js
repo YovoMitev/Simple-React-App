@@ -48,12 +48,10 @@ class SignUpContainer extends Component {
         }
         this.clearErrors();
         const {registeredUsername, signUpAction, history} = this.props;
-
         if (registeredUsername.includes(user.username)) {
             this.setState({message: `User exist with given username : ${user.username}`});
             return;
         }
-
         signUpAction(user);
         history.push("/sign-in");
     };
