@@ -4,7 +4,7 @@ import Footer from "../../modules/footer/Footer";
 
 const DashboardPage = (props) => (
     <div>
-        <UserHeader/>
+        <UserHeader history={props.history}/>
         <h1>Dashboard Page</h1>
         <Footer/>
     </div>

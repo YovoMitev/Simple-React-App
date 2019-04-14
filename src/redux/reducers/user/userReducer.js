@@ -1,4 +1,4 @@
-import {SIGN_UP_SUCCESS, SIGN_IN_SUCCESS} from "../../actions/user/actionTypes";
+import {SIGN_UP_SUCCESS, SIGN_IN_SUCCESS, LOGOUT} from "../../actions/user/actionTypes";
 
 const initialState = {
     users: [],
@@ -17,6 +17,11 @@ export default function userReducer(state = initialState, action) {
         case SIGN_IN_SUCCESS:
             return Object.assign({}, state, {
                 currentSignInUser: action.user
+            });
+
+        case LOGOUT:
+            return Object.assign({}, state, {
+                currentSignInUser: null
             });
 
         default:
