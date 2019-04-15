@@ -43,15 +43,13 @@ export default function userReducer(state = initialState, action) {
 
 const updateUserArray = (state, updatedUser, updatedUserIndex) => {
     return state.map((user, index) => {
-        console.log(index)
-        console.log(updatedUserIndex)
-       if(index !== updatedUserIndex) {
+        if (index !== updatedUserIndex) {
             return user;
-       }
-       console.log("HERE");
-       return {
-           ...user,
-           ...updatedUser
-       }
+        }
+
+        return {
+            ...user,
+            ...updatedUser
+        }
     });
 };

@@ -4,6 +4,7 @@ import {signInAction} from "../../redux/actions/user/actions";
 import SignInForm from "./components/SignInForm";
 
 const MINIMUM_ALLOWED_SYMBOLS = 3;
+
 class SignInContainer extends Component {
     state = {
         user: {
@@ -36,8 +37,8 @@ class SignInContainer extends Component {
 
         user["username"].length >= MINIMUM_ALLOWED_SYMBOLS
         && user["password"].length >= MINIMUM_ALLOWED_SYMBOLS
-        ? this.setState({dataIsPopulated: true})
-        : this.setState({dataIsPopulated: false});
+            ? this.setState({dataIsPopulated: true})
+            : this.setState({dataIsPopulated: false});
 
         this.setState({user});
     };
@@ -56,14 +57,14 @@ class SignInContainer extends Component {
 
         users.map(currentUser => {
             const {name, username, password} = currentUser;
-            if(username === user.username && password === user.password) {
+            if (username === user.username && password === user.password) {
                 isValidUser = true;
                 user["name"] = name;
             }
         });
 
-        if(!isValidUser) {
-            this.setState({message: "Wrong credentials !"})
+        if (!isValidUser) {
+            this.setState({message: "Wrong credentials !"});
             return;
         }
 
