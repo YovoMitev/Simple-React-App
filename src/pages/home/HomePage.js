@@ -3,9 +3,19 @@ import GuestHeader from "../../modules/header/GuestHeader";
 import Footer from "../../modules/footer/Footer";
 
 const HomePage = () => (
-    <div>
+    <div className="container">
         <GuestHeader/>
-            <h1>Welcome to our simple React App !</h1>
+                <h1 className="text-center">Lorem ipsum</h1>
+                <div>
+                    <p>
+                        Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum.
+                        Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum.
+                        Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum.
+                        Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum.
+                        Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum.
+                        Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum.
+                    </p>
+                </div>
         <Footer/>
     </div>
 );

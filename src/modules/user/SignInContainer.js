@@ -93,7 +93,6 @@ class SignInContainer extends Component {
 
         return (
             <div>
-                <h2>Sign-In Form</h2>
                 <h3>{message}</h3>
                 <SignInForm
                     handleSubmit={this.handleSubmit}

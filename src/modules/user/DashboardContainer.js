@@ -4,10 +4,6 @@ import {deleteAction} from "../../redux/actions/user/actions";
 import UsersTable from "./components/UsersTable";
 
 class DashboardContainer extends Component {
-    state = {
-        users: []
-    };
-
     render() {
         const {deleteAction, users, currentSignInUser} = this.props;
         return (

@@ -1,10 +1,11 @@
 import React from "react";
-import {Card} from "react-bootstrap";
 
 const Footer = () => (
-    <Card>
-        <Card.Header><Card.Title>Simple React App - Yovo Mitev</Card.Title></Card.Header>
-    </Card>
+    <div className="card">
+        <div className="card-header">
+            Simple React App By Yovo Mitev
+        </div>
+    </div>
 );
 
 export default Footer;

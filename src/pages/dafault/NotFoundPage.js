@@ -5,7 +5,7 @@ import Footer from "../../modules/footer/Footer"
 const NotFoundPage = () => (
     <div>
         <GuestHeader/>
-            <h1>404, Not Found !</h1>
+        <h2 className="text-center">404 Not Found !</h2>
         <Footer/>
     </div>
 );

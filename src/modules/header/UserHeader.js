@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
-import {Navbar, Nav} from "react-bootstrap";
 import {logoutAction} from "../../redux/actions/user/actions";
 
 class UserHeader extends Component {
@@ -9,20 +8,17 @@ class UserHeader extends Component {
         const {user, logoutAction, history} = this.props;
         const {username} = user;
         return (
-            <Navbar bg="dark" variant="dark">
-                <Navbar.Brand href="/">{username}</Navbar.Brand>
-                <Nav className="mr-auto">
-                    <Navbar.Brand>
-                        <Link style={{textDecoration: 'none'}} to="/dashboard">Dashboard</Link>
-                    </Navbar.Brand>
-                    <Navbar.Brand>
-                        <Link style={{textDecoration: 'none'}} onClick={() => {
-                            logoutAction();
-                            history.push("/");
-                        }} to="#">Log out</Link>
-                    </Navbar.Brand>
-                </Nav>
-            </Navbar>
+            <ul className="nav justify-content-center">
+                <li className="nav-item">
+                    <Link className="nav-link" to="/dashboard">{username}</Link>
+                </li>
+                <li className="nav-item">
+                    <Link className="nav-link" onClick={() => {
+                        logoutAction();
+                        history.push("/");
+                    }} to="#">Log out</Link>
+                </li>
+            </ul>
         )
     }
 }

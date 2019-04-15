@@ -1,10 +1,10 @@
 import React from "react";
 
-const Input = ({name, placeholder, type, value, onChange, onClick, disabled, error}) => (
+const Input = ({name, placeholder, type, value, onChange, onClick, disabled, error, className}) => (
     <div className="form-group">
         <label htmlFor={name}>{placeholder}</label>
         <input
-            className={type === "submit" ? "btn btn-primary" : "form-control"}
+            className={className}
             type={type}
             name={name}
             id={name}

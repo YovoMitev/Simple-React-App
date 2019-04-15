@@ -11,6 +11,7 @@ const SignUpForm = ({handleInput, handleSubmit, name, username, password, errors
                 value={name}
                 onChange={handleInput}
                 error={errors.name}
+                className="form-control"
             />
         </div>
         <div className="form-group">
@@ -21,6 +22,7 @@ const SignUpForm = ({handleInput, handleSubmit, name, username, password, errors
                 value={username}
                 onChange={handleInput}
                 error={errors.username}
+                className="form-control"
             />
         </div>
         <div className="form-group">
@@ -31,6 +33,7 @@ const SignUpForm = ({handleInput, handleSubmit, name, username, password, errors
                 value={password}
                 onChange={handleInput}
                 error={errors.password}
+                className="form-control"
             />
         </div>
         <div className="form-group">
@@ -38,6 +41,7 @@ const SignUpForm = ({handleInput, handleSubmit, name, username, password, errors
                 type="submit"
                 value="Sign-Up"
                 onClick={handleSubmit}
+                className="btn btn-dark"
             />
         </div>
     </form>

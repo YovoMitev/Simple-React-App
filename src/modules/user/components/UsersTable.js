@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 const UsersTable = ({users, deleteAction, currentSignInUser}) => (
     <table className="table">
@@ -18,12 +19,10 @@ const UsersTable = ({users, deleteAction, currentSignInUser}) => (
                 <td>{name}</td>
                 <td>{username}</td>
                 <td>
-                    {username !== currentSignInUser.username
-                    && <button className="btn btn-primary" onClick={() => {
-                        deleteAction(username)
+                    {username === currentSignInUser.username
+                        ? <Link to="/user/edit" className="btn btn-primary">Edit</Link>
+                        : <button className="btn btn-primary" onClick={() => {deleteAction(username)}}>Delete</button>
                     }
-                    }>Delete
-                    </button>}
                 </td>
             </tr>
         })}
